@@ -6,12 +6,12 @@ const auth = require("../middleware/authMiddleware.js")
 
 const router = express.Router();
 
-router.post("/createTask", addTask)
-router.get("/allTask",getAllTasks)
-router.get("/:id",getSingleTask)
-router.get("/email/:emailId",getAllTasksByEmail)
- router.put("/:id",updateTask)
- router.delete("/:id",deleteTask)
+router.post("/createTask",auth,addTask)
+router.get("/allTask",auth,getAllTasks)
+router.get("/:id",auth,getSingleTask)
+router.get("/email/:emailId",auth,getAllTasksByEmail)
+ router.put("/:id",auth,updateTask)
+ router.delete("/:id",auth,deleteTask)
 
 
 module.exports = router

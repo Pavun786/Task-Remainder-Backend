@@ -51,6 +51,7 @@ const userLogin = async(req,res)=>{
     }
 
     const userFind = await client.db("task_completion").collection("users").findOne({email : email})
+    const username = userFind.userName
 
     if(!userFind){
         res.status(401).send({message : "User not found"})
@@ -63,7 +64,7 @@ const userLogin = async(req,res)=>{
             res.status(401).send({message : "Invalid credentials"})
         }else{
             const token = await jwt.sign({id : userFind._id},process.env.SECRET_KEY)
-            res.status(200).send({message :"Logined successfully",token,email})
+            res.status(200).send({message :"Logined successfully",token,email,username})
         }
     }
 

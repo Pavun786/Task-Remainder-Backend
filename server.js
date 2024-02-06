@@ -8,6 +8,7 @@ const user = require("./Routes/authroute.js")
 const main = require("./Routes/crudroute.js")
 const {dbConnection} = require("./Connection/dbConnection.js")
 const remainderMailSend = require("./Mailsend/remainderMail.js")
+const Mail = require("./Mailsend/Mail.js")
 
 const app = express();
 
@@ -29,10 +30,8 @@ app.get("/",(req,res)=>{
     res.send("Welcome to the Task Remainder project")
 })
 
-
-  
-
-remainderMailSend();
+ remainderMailSend();
+//Mail();
 
 
 app.listen(port,()=>{
